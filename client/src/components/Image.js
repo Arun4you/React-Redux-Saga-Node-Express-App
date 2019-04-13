@@ -12,7 +12,7 @@ import red from '@material-ui/core/colors/red';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import CommentIcon from '@material-ui/icons/Comment';
 import Button from '@material-ui/core/Button';
-import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const styles = (theme) => ({
     card: {
@@ -34,45 +34,63 @@ const styles = (theme) => ({
     }
 });
 
-
-const Image = ({ classes, image, handleLikes }) => {
+const Image = ({ classes, image, handleLikes, redirectTo }) => {
     const { created, display_src, username, caption, charAt, likes, photo, _id } = image
     const id = photo || _id
-    return (
-        <Card className={classes.card}>
-            <Link to={"/" + _id} style={{ textDecoration: 'none' }}>
-                <CardHeader
-                    avatar={
-                        <Avatar aria-label="ReactXImage" className={classes.avatar}>
-                            {charAt}
-                        </Avatar>
-                    }
-                    title={username}
-                    subheader={created}
-                />
-                <CardActionArea>
-                    <CardMedia
-                        className={classes.media}
-                        image={display_src || ' '}
-                    />
-                    <CardContent>
-                        <Typography component="p">
-                            {caption}
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Link>
 
-            <CardActions className={classes.actions} disableActionSpacing>
-                <Button variant="outlined" color="primary" className={classes.button} id={id} onClick={handleLikes}>
-                    <FavoriteIcon /> {likes}
-                </Button>
-                <Button variant="outlined" color="primary" className={classes.button} id={id}>
-                    <CommentIcon />
-                </Button>
-            </CardActions>
-        </Card>
+    if (!display_src) {
+        return null; 
+    }
+
+    return (
+        <div onClick={()=>redirectTo(_id)} >
+            <Card className={classes.card}>
+                    <CardHeader
+                        avatar={
+                            <Avatar aria-label="ReactXImage" className={classes.avatar}>
+                                {charAt}
+                            </Avatar>
+                        }
+                        title={username}
+                        subheader={created}
+                    />
+                    <CardActionArea>
+                        <CardMedia
+                            className={classes.media}
+                            image={display_src || ' '}
+                        />
+                        <CardContent>
+                            <Typography component="p">
+                                {caption}
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+
+                <CardActions className={classes.actions} disableActionSpacing>
+                    <Button data-test="favouriteButtonComponent" variant="outlined" color="primary" className={classes.button} id={id} onClick={handleLikes}>
+                        <FavoriteIcon /> {likes}
+                    </Button>
+                    <Button data-test="commentButtonComponent" variant="outlined" color="primary" className={classes.button} id={id}>
+                        <CommentIcon />
+                    </Button>
+                </CardActions>
+            </Card>
+        </div>
     );
+}
+
+Image.propTypes = {
+    handleLikes: PropTypes.func,
+    image: PropTypes.shape({
+        created: PropTypes.string,
+        display_src: PropTypes.string,
+        username: PropTypes.string,
+        caption: PropTypes.string,
+        charAt: PropTypes.string,
+        likes: PropTypes.number,
+        photo: PropTypes.string,
+        _id: PropTypes.string,
+    })
 }
 
 export default withStyles(styles)(Image);

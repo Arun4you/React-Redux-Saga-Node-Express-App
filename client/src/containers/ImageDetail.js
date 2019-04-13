@@ -109,7 +109,7 @@ export class ImageDetail extends Component {
               <Image key={image._id} allComments={comments} image={image} handleLikes={this.handleLikes} handleComment={this.handleComment} />
             </ErrorHandler>
           </Grid>
-          <Grid item xs={12} sm={6} lg={6}>e
+          <Grid item xs={12} sm={6} lg={6}>
             <div className={classes.commentSection}>
               <ErrorHandler render={() => <div className="error">Error Loading Comments.</div>}>
                 <Comments

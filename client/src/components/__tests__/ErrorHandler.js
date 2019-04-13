@@ -1,5 +1,6 @@
 import ErrorHandler from "./../ErrorHandler";
-
+import React from 'react'
+import { shallow, mount } from "enzyme";
 // Let's create a Child functional component which does
 // nothing but throw an error. This way we can ensure we'll trigger
 // an error and have our Error Boundary called.
@@ -25,17 +26,17 @@ const pauseErrorLogging = codeToRun => {
 
 it("catches error and renders message", () => {
   // stop error within from logging error to console
-  // pauseErrorLogging(() => {
-  //   // use mount from enzyme to mount/render error boundary and child
-  //   const wrapper = mount(
-  //     <ErrorHandler render={() => <div>Error has occurred</div>}>
-  //       <Child />
-  //     </ErrorHandler>
-  //   );
+  pauseErrorLogging(() => {
+    // use mount from enzyme to mount/render error boundary and child
+    const wrapper = mount(
+      <ErrorHandler render={() => <div>Error has occurred</div>}>
+        <Child />
+      </ErrorHandler>
+    );
 
-  //   // because an error has occured in the Child
-  //   // let's make sure our error boundary has displayed the error
-  //   // which was provided in the render prop
-  //   expect(wrapper.text()).toEqual("Error has occurred");
-  // });
+    // because an error has occured in the Child
+    // let's make sure our error boundary has displayed the error
+    // which was provided in the render prop
+    expect(wrapper.text()).toEqual("Error has occurred");
+  });
 });

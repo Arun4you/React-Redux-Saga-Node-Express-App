@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import { connect } from "react-redux";
 import { loadUserImages, incrementLikes, submitComments, addImage } from './../store/actions'
 import { ErrorHandler } from "./../components";
+import { Redirect } from 'react-router-dom'
 
 const styles = theme => ({
   fab: {
@@ -31,6 +32,7 @@ export class Home extends Component {
   }
 
   componentDidMount() {
+    console.log("Home ComponnetDidMount")
     this.props.loadUserImages()
   }
 
@@ -42,18 +44,15 @@ export class Home extends Component {
 
   handleLikes = (e) => {
     const id = e.currentTarget.id
-    console.log(id)
     this.props.incrementLikes(id, 'IMAGES')
   }
 
   handleComment = (e, comment) => {
-    console.log(e.currentTarget.id)
     const id = e.currentTarget.id
     this.props.submitComments(id, comment)
   }
 
   handleForm = (values) => {
-    console.log("onsubmit", values)
     const { caption, url, username } = values
     const imageObj = {
       caption,
@@ -66,21 +65,26 @@ export class Home extends Component {
     }))
   }
 
+  redirectTo = (_id) =>{
+    this.props.history.push(`/${_id}`);
+  }
+
   render() {
     const { addImage } = this.state;
-    const { classes, images, isLoading, isError } = this.props;
+    const { classes, images = [], isLoading, isError } = this.props;
+    const { IMAGES : imageLoading = []} = isLoading
+    const { IMAGES: imageError = []} = isError
 
-    console.log(images, isLoading, isError)
-    if (isLoading.IMAGES && !images.length) {
+    if (imageLoading && !images.length) {
       return <h1>Loading</h1>
     }
-    if (isError.IMAGES && !images.length) {
+    if (imageError && !images.length) {
       return <h1>Something went wrong</h1>
     }
     return (
       <Fragment>
         {/* <Logo /> */}
-        <Typography align='center' component="h1" variant="display1" gutterBottom onClick={this.addImage}>
+        <Typography data-test='addImage' align='center' component="h1" variant="display1" gutterBottom onClick={this.addImage}>
           Add Image
           <Fab color="primary" aria-label="Add" className={classes.fab}>
             <AddIcon />
@@ -101,7 +105,7 @@ export class Home extends Component {
             return (
               <Grid item key={image._id} xs={12} sm={6} lg={3}>
                 <ErrorHandler render={() => <div className="error">Error Loading Images.</div>}>
-                  <Image image={image} handleLikes={this.handleLikes} handleComment={this.handleComment} />
+                  <Image redirectTo={this.redirectTo} image={image} handleLikes={this.handleLikes} handleComment={this.handleComment} />
                 </ErrorHandler>
               </Grid>)
           })}

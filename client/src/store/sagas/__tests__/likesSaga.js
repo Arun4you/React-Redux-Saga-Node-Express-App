@@ -52,6 +52,5 @@ test('should handle image detail load errors in case of failure', async () => {
 
     expect(api.addLikes.mock.calls.length).toBe(1);
     expect(api.fetchImageDetail.mock.calls.length).toBe(0);
-    
-    // expect(dispatchedActions).toContainEqual(setImagesError("error"), setImageDetailError("error"));
+    expect(dispatchedActions).toContainEqual(setImagesError("error"), setImageDetailError("error"));
 });

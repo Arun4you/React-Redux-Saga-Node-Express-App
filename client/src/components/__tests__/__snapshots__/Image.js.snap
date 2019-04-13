@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`>>> <Image /> -  Testing Functionality  --- SHOULD MATCH SNAPSHOT 1`] = `
+<div
+  onClick={[Function]}
+>
+  <div
+    className="MuiPaper-root-7 MuiPaper-elevation1-10 MuiPaper-rounded-8 MuiCard-root-6 Image-card-1"
+  >
+    <div
+      className="MuiCardHeader-root-34"
+    >
+      <div
+        className="MuiCardHeader-avatar-35"
+      >
+        <div
+          aria-label="ReactXImage"
+          className="MuiAvatar-root-40 MuiAvatar-colorDefault-41 Image-avatar-4"
+        />
+      </div>
+      <div
+        className="MuiCardHeader-content-37"
+      >
+        <span
+          className="MuiTypography-root-43 MuiTypography-body2-51 MuiCardHeader-title-38"
+        >
+          Arun
+        </span>
+        <span
+          className="MuiTypography-root-43 MuiTypography-body2-51 MuiTypography-colorTextSecondary-76 MuiCardHeader-subheader-39"
+        >
+          2019-03-20T18:17:37.212Z
+        </span>
+      </div>
+    </div>
+    <button
+      className="MuiButtonBase-root-82 MuiCardActionArea-root-79"
+      onBlur={[Function]}
+      onContextMenu={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <div
+        className="MuiCardMedia-root-85 Image-media-2"
+        style={
+          Object {
+            "backgroundImage": "url(\\"https://picsum.photos/400/400?image=127\\")",
+          }
+        }
+      />
+      <div
+        className="MuiCardContent-root-87"
+      >
+        <p
+          className="MuiTypography-root-43 MuiTypography-body1-52"
+        >
+          am watinggggg !! #Yummy
+        </p>
+      </div>
+      <span
+        className="MuiCardActionArea-focusHighlight-81"
+      />
+      <span
+        className="MuiTouchRipple-root-126"
+      />
+    </button>
+    <div
+      className="MuiCardActions-root-88 MuiCardActions-disableActionSpacing-89 Image-actions-3"
+    >
+      <button
+        className="MuiButtonBase-root-82 MuiButton-root-91 MuiButton-outlined-99 MuiButton-outlinedPrimary-100 Image-button-5"
+        data-test="favouriteButtonComponent"
+        disabled={false}
+        id="5c9283c13bd4543164bd6507"
+        onBlur={[Function]}
+        onClick={[MockFunction]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiButton-label-92"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-117"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+            <path
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+            />
+          </svg>
+           
+          25
+        </span>
+        <span
+          className="MuiTouchRipple-root-126"
+        />
+      </button>
+      <button
+        className="MuiButtonBase-root-82 MuiButton-root-91 MuiButton-outlined-99 MuiButton-outlinedPrimary-100 Image-button-5"
+        data-test="commentButtonComponent"
+        disabled={false}
+        id="5c9283c13bd4543164bd6507"
+        onBlur={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiButton-label-92"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-117"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </span>
+        <span
+          className="MuiTouchRipple-root-126"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;

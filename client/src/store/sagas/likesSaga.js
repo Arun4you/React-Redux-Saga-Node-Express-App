@@ -5,14 +5,12 @@ import { IMAGEDETAIL } from "./../constants";
 
 export function* handleLikes({ id, page }) {
   try {
-    console.log("id", id, "page", page)
     yield call(addLikes, id, page);
     switch (page) {
       case 'IMAGES':
         let images = yield call(fetchImages);
         yield put(setImages(images));
       case 'IMAGEDETAIL':
-        console.log("id", id, "page", page)
         const image = yield call(fetchImageDetail, id);
         yield put(setImageDetail(image));
       default:

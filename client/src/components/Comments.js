@@ -13,7 +13,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
-import './../styles.css'
+// import '../styles.css'
 
 const styles = theme => ({
     root: {
@@ -41,52 +41,56 @@ const styles = theme => ({
 });
 
 const Comments = ({ allComments, classes, handleOver, handleOut, deleteButton, handleCommentDelete }) => {
-    const { comments } = allComments
+    let { comments } = allComments
+    if(comments === undefined){
+        comments = []
+    }
     return (
         <Fragment>
             <Typography variant="h3" gutterBottom>
                 User comments below...
             </Typography>
-            {comments && comments.map((comment) => {
-                return (
-                    <Fragment key={comment._id}>
-                        <Grid container spacing={0}>
-                            <Grid item>
-                                <List>
-                                    <ListItem>
-                                        <ListItemText
-                                            primary={`${comment.username} :`}
-                                        />
-
-                                        <div className={classes.comment} onMouseOver={() => handleOver(comment._id)} onMouseOut={() => handleOut(comment._id)}>
+            {comments.length ?
+                comments && comments.map((comment) => {
+                    return (
+                        <Fragment key={comment._id}>
+                            <Grid container spacing={0}>
+                                <Grid item>
+                                    <List>
+                                        <ListItem>
                                             <ListItemText
-                                                secondary={comment.comment}
+                                                primary={`${comment.username} :`}
                                             />
-                                            {/* <div className={classes.deleteComment}>
+
+                                            <div className={classes.comment} onMouseOver={() => handleOver(comment._id)} onMouseOut={() => handleOut(comment._id)}>
+                                                <ListItemText
+                                                    secondary={comment.comment}
+                                                />
+                                                {/* <div className={classes.deleteComment}>
                                                 <ListItemSecondaryAction>
                                                     <IconButton aria-label="Delete">
                                                         &times;
                                                     </IconButton>
                                                 </ListItemSecondaryAction>
                                             </div> */}
-                                            <div id={comment._id}
-                                                className={deleteButton === comment._id ? classes.showDelete : classes.hideDelete}
-                                                onClick={(e, comment) => handleCommentDelete(e, comment)}
-                                            >
-                                                <ListItemSecondaryAction>
-                                                    <IconButton aria-label="Delete">
-                                                        {/* <DeleteIcon /> */}
-                                                        &times;
+                                                <div id={comment._id}
+                                                    className={deleteButton === comment._id ? classes.showDelete : classes.hideDelete}
+                                                    onClick={(e, comment) => handleCommentDelete(e, comment)}
+                                                >
+                                                    <ListItemSecondaryAction>
+                                                        <IconButton aria-label="Delete">
+                                                            {/* <DeleteIcon /> */}
+                                                            &times;
                                                     </IconButton>
-                                                </ListItemSecondaryAction>
+                                                    </ListItemSecondaryAction>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </ListItem>
-                                </List>
+                                        </ListItem>
+                                    </List>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </Fragment>)
-            })}
+                        </Fragment>)
+                }): <p>No Comments yet</p>}
         </Fragment>
     )
 }

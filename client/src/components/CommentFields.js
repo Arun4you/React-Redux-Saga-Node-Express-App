@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import TextField from '@material-ui/core/TextField';
 import CommentIcon from '@material-ui/icons/Comment';
-import './../styles.css'
+// import './../styles.css'
 
 const styles = theme => ({
     root: {
@@ -33,10 +33,10 @@ const styles = theme => ({
 });
 
 const CommentFields = ({ username, comment, classes, handleChange, onCommentSubmit }) => {
-
+ 
     return (
         <div className={classes.margin}>
-            <form onSubmit={onCommentSubmit} className={classes.container}>
+            <form id="commentFormId" onSubmit={onCommentSubmit} className={classes.container}>
                 <Grid container spacing={8} alignItems="flex-end">
                     <Grid item>
                         <AccountCircle />
