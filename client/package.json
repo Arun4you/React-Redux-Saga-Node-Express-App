@@ -4,8 +4,8 @@
     "description": "React instagram clone",
     "main": "index.js",
     "scripts": {
-        "test": "jest",
-        "test:watch": "npm test -- --watchAll",
+        "test": "jest --verbose",
+        "test:watch": "npm test -- --watchAll --verbose",
         "start": "webpack-dev-server",
         "build": "webpack --mode production"
     },

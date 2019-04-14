@@ -17,13 +17,11 @@ export function* handleLikes({ id, page }) {
         return "NO mATCH"
     }
   } catch (error) {
-    console.log(error)
     yield put(setImagesError(error.toString()))
     yield put(setImageDetailError(error.toString()))
   }
 }
 
 export default function* watchedLikes() {
-  console.log("watchedCommentslLoad")
   yield takeEvery(IMAGEDETAIL.INC, handleLikes);
 }

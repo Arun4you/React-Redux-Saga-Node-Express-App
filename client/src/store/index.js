@@ -6,9 +6,10 @@ import rootSaga from './sagas'
 const sagaMiddleware = createSagaMiddleware();
 export const middlewares = [sagaMiddleware];
 
-const configureStore = () => {
+const configureStore = (initialState = {}) => {
   const store = createStore(
     rootReducer,
+    initialState,
     window.__REDUX_DEVTOOLS_EXTENSION__
       ? compose(
         applyMiddleware(...middlewares),
